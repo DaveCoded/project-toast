@@ -2,18 +2,26 @@ import React from 'react';
 
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
+import { ToastContext } from '../ToastProvider';
 
 function ToastShelf() {
-  return (
-    <ol className={styles.wrapper}>
-      <li className={styles.toastWrapper}>
-        <Toast variant="notice">Example notice toast</Toast>
-      </li>
-      <li className={styles.toastWrapper}>
-        <Toast variant="error">Example error toast</Toast>
-      </li>
-    </ol>
-  );
+    const { toasts, removeToast } = React.useContext(ToastContext);
+
+    if (toasts.length === 0) return null;
+
+    return (
+        <ol className={styles.wrapper} role="region" aria-live="polite" aria-label="Notification">
+            {toasts.map(({ variant, message, id }) => {
+                return (
+                    <li className={styles.toastWrapper} key={id}>
+                        <Toast variant={variant} handleDismiss={() => removeToast(id)}>
+                            {message}
+                        </Toast>
+                    </li>
+                );
+            })}
+        </ol>
+    );
 }
 
 export default ToastShelf;

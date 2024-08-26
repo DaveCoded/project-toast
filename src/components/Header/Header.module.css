@@ -1,0 +1,28 @@
+.header {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    min-height: 300px;
+}
+
+.header h1 {
+    position: relative;
+    font-size: 4.25rem;
+    line-height: 1.1;
+    padding-bottom: 32px;
+    color: white;
+    /* prettier-ignore */
+    text-shadow:
+    0px 0px 10px hsl(250deg 40% 16% / 0.5),
+    0px 0px 20px hsl(250deg 40% 16% / 0.5),
+    0px 0px 40px hsl(250deg 40% 16% / 0.5);
+}
+
+.header img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 250px;
+}
