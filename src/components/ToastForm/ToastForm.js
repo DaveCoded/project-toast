@@ -11,6 +11,7 @@ function ToastForm() {
     const [variant, setVariant] = React.useState('notice');
 
     const { addToast } = React.useContext(ToastContext);
+    const textareaRef = React.useRef();
 
     const handleMessageChange = event => {
         setMessage(event.target.value);
@@ -25,6 +26,7 @@ function ToastForm() {
         addToast({ variant, message });
         setMessage('');
         setVariant('notice');
+        textareaRef.current?.focus();
     };
 
     return (
@@ -35,6 +37,7 @@ function ToastForm() {
                 </label>
                 <div className={styles.inputWrapper}>
                     <textarea
+                        ref={textareaRef}
                         id="message"
                         value={message}
                         onChange={handleMessageChange}
